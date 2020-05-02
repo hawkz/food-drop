@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <title>Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body>
+  <form id="test-form">
+
+    <div>
+      <label>My name is...</label>
+      <input type="text" name="name" placeholder="Your name here" />
+    </div>
+
+    <div>
+      <label>There is a need for...</label>
+      <input type="text" name="need" placeholder="Food we need to collect" />
+    </div>
+
+    <div>
+      <label>Drop donations here...</label>
+      <input type="text" name="drop" placeholder="Where to bring those items" />
+    </div>
+
+    <div>
+      <label>On this day and time</label>
+      <input type="text" name="when" placeholder="Drop off window" />
+    </div>
+
+    <div>
+      <label>Need to get in touch?</label>
+      <input type="text" name="contact" placeholder="Contact details" />
+    </div>
+
+    <div>
+      <button type="submit" id="submit-form">Submit</button>
+    </div>
+
+  </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $.fn.serializeObject = function() {
+      "use strict";
+      var a = {},
+        b = function(b, c) {
+          var d = a[c.name];
+          "undefined" != typeof d && d !== null ? $.isArray(d) ? d.push(c.value) : a[c.name] = [d, c.value] : a[c.name] = c.value
+        };
+      return $.each(this.serializeArray(), b), a
+    };
+
+    var $form = $('form#test-form'),
+      url = 'https://script.google.com/macros/s/AKfycbwm29hz4WXBdNZR3r3Sf9Dbd-i2gmeKPwJuDBktrObsRraCx30k/exec'
+
+    $('#submit-form').on('click', function(e) {
+      e.preventDefault();
+      var jqxhr = $.ajax({
+        url: url,
+        method: "GET",
+        dataType: "json",
+        data: $form.serializeObject()
+      }).success(
+        // do something
+      );
+    })
+
+  </script>
+</body>
+
+</html>
