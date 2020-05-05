@@ -3,70 +3,62 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Form</title>
+  <title>Feed Birmingham</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="text/javascript" src="html2pdf.js"></script>
 </head>
 
 <body>
+
   <form id="test-form">
 
-    <div>
-      <label>My name is...</label>
-      <input type="text" name="name" placeholder="Your name here" />
+    <div id="test">
+      <img src="head.png" alt="You can help #feedbirmingham" />
+      <p>Hi, my name is <span id="name" contenteditable="true">type your name here</span>.</p>
+      <p>I’m collecting donations for food charities supporting vulnerable people across the city. You can help #feedbirmingham by dropping donations to <span id="drop" contenteditable="true">type collection location here</span> at <span id="when"
+          contenteditable="true">type time for drop-offs here</span>. Contact me at <span id="contact" contenteditable="true">type your contact details here</span>.</p>
+
+      <p>There is a great need for <em id="need">non-perishable foods (tinned or long-life), nappies, baby milk, egg boxes, plastic bags and toiletries</em>.<br />
+        <img src="food.jpg" alt="Food items" />
+      </p>
+
+      <p>Support financially: <a href="https://www.tiny.cc/feedbirmingham">tiny.cc/feedbirmingham</a><br />
+        Email: <a href="mailto:feedbrum@thrivetogetherbham.com">feedbrum@thrivetogetherbham.com</a> &nbsp; Tel: <a href="tel:+447443762478">07443 762478</a></p>
+
+      <img src="foot.png" alt="Near Neighbours, Thrive together Birmingham, Edgbaston foundation, The real junk food project brum and Active Wellbeing Society" />
     </div>
 
-    <div>
-      <label>There is a need for...</label>
-      <input type="text" name="need" placeholder="Food we need to collect" />
-    </div>
-
-    <div>
-      <label>Drop donations here...</label>
-      <input type="text" name="drop" placeholder="Where to bring those items" />
-    </div>
-
-    <div>
-      <label>On this day and time</label>
-      <input type="text" name="when" placeholder="Drop off window" />
-    </div>
-
-    <div>
-      <label>Need to get in touch?</label>
-      <input type="text" name="contact" placeholder="Contact details" />
-    </div>
-
-    <div>
-      <button type="submit" id="submit-form">Submit</button>
+    <div class="nope">
+      <button type="submit" id="pdf">PDF</button>
     </div>
 
   </form>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script>
-    $.fn.serializeObject = function() {
-      "use strict";
-      var a = {},
-        b = function(b, c) {
-          var d = a[c.name];
-          "undefined" != typeof d && d !== null ? $.isArray(d) ? d.push(c.value) : a[c.name] = [d, c.value] : a[c.name] = c.value
-        };
-      return $.each(this.serializeArray(), b), a
-    };
-
-    var $form = $('form#test-form'),
-      url = 'https://script.google.com/macros/s/AKfycbwm29hz4WXBdNZR3r3Sf9Dbd-i2gmeKPwJuDBktrObsRraCx30k/exec'
-
-    $('#submit-form').on('click', function(e) {
+  <script type="text/javascript">
+    var url = 'https://script.google.com/macros/s/AKfycbwm29hz4WXBdNZR3r3Sf9Dbd-i2gmeKPwJuDBktrObsRraCx30k/exec';
+    //<![CDATA[
+    $('#pdf').on('click', function(e) {
       e.preventDefault();
+      var element = document.getElementById('test');
+      html2pdf(element);
+      var time = new Date().toLocaleString();
+      var text = '{"name" : "' + document.getElementById('name').innerHTML + '", ' +
+        '"need" : "' + document.getElementById('need').innerHTML + '", ' +
+        '"timestamp" : "' + time + '", ' +
+        '"drop" : "' + document.getElementById('drop').innerHTML + '", ' +
+        '"when" : "' + document.getElementById('when').innerHTML + '", ' +
+        '"contact" : "' + document.getElementById('contact').innerHTML + '"}';
       var jqxhr = $.ajax({
         url: url,
         method: "GET",
         dataType: "json",
-        data: $form.serializeObject()
-      }).success(
-        // do something
-      );
-    })
+        data: JSON.parse(text)
+      });
+    });
+    //]]>
 
   </script>
 </body>
