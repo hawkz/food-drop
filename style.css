@@ -1,13 +1,49 @@
+body {
+  background: yellow;
+  text-align: center;
+  margin: 16px;
+  padding: 0;
+}
+
+
 form {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: -3rem auto;
   text-align: center;
   font-size: 100%;
+  background: white;
+  transform: scale(0.8);
+  border: 1px solid black;
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+a.button, button {
+  display: inline-block;
+  background: yellow;
+  width: auto;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border: 3px solid black;
+  margin-bottom: 1rem;
+  clear:both;
+  cursor: pointer;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: bold;
+}
+
+a.button:hover, button:hover {
+  background: black;
+  color: yellow;
 }
 
 form span {
   font-weight: bold;
   border-bottom: 4px solid black;
+}
+
+h1 {
+  font-size: 50px;
 }
 
 img {
@@ -17,10 +53,16 @@ img {
 }
 
 p {
-  margin: 0 1em 1.5rem;
+  max-width: 40em;
+  margin: 0 auto 1.5em;
   font-size: 160%;
   text-align: center;
   font-family: 'Open sans', Arial, sans-serif;
+}
+
+#test p {
+  max-width: auto;
+  margin: 0 1em 1.5em;
 }
 
 span {
