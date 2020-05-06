@@ -1,8 +1,9 @@
 body {
-  background: yellow;
+  background: #DA532C;
   text-align: center;
   margin: 16px;
   padding: 0;
+  color: white;
 }
 
 
@@ -13,33 +14,43 @@ form {
   font-size: 100%;
   background: white;
   transform: scale(0.8);
-  border: 1px solid black;
+  border: 1px solid white;
   box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
   overflow: hidden;
+  color: black;
+}
+
+#test a {
+  color: black;
+}
+
+#test {
+  color: black !important;
 }
 
 a.button, button {
   display: inline-block;
-  background: yellow;
+  background: #DA532C;
   width: auto;
   padding: 1rem;
   font-size: 1.5rem;
-  border: 3px solid black;
+  border: 3px solid white;
   margin-bottom: 1rem;
   clear:both;
   cursor: pointer;
   font-family: 'Open Sans', Arial, sans-serif;
   font-weight: bold;
+  color: white;
 }
 
 a.button:hover, button:hover {
-  background: black;
-  color: yellow;
+  background: white;
+  color: #DA532C;
 }
 
 form span {
   font-weight: bold;
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid white;
 }
 
 h1 {
@@ -73,6 +84,6 @@ span {
 
 a {
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: bold;
 }
