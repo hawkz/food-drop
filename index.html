@@ -74,7 +74,8 @@
     $('#pdf').on('click', function(e) {
       e.preventDefault();
       var element = document.getElementById('test');
-      html2pdf(element);
+      var options = {filename: 'feedbirmingham.pdf'};
+      var exporter = new html2pdf(element, options);
       var time = new Date().toLocaleString();
       var text = '{"name" : "' + document.getElementById('name').innerHTML + '", ' +
         '"need" : "' + document.getElementById('need').innerHTML + '", ' +
