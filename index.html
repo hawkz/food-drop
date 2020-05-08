@@ -59,8 +59,10 @@
 
   <div class="nope">
     <button type="submit" id="pdf">Download this leaflet</button><br />
-    <a class="button" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ffeedbirmingham.org&text=I%E2%80%99m%20helping%20%23feedbirmingham.%20Drop%20donations%20%5BINSERT%20LOCATION%5D%20on%20%5BINSERT%20DAY%5D%20between%20%5BINSERT%20TIME%5D.%20Contact%20me%20on%20here%20for%20more%20info.">Share on Twitter</a><br />
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffeedbirmingham.org&quote=I%E2%80%99m%20helping%20%23feedbirmingham.%20Drop%20donations%20[INSERT%20LOCATION]%20on%20[INSERT%20DAY]%20between%20[INSERT%20TIME].%20Contact%20me%20on%20here%20for%20more%20info.">Share on Facebook</a>
+    <a class="button" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ffeedbirmingham.org&text=I%E2%80%99m%20helping%20%23feedbirmingham.%20Drop%20donations%20%5BINSERT%20LOCATION%5D%20on%20%5BINSERT%20DAY%5D%20between%20%5BINSERT%20TIME%5D.%20Contact%20me%20on%20here%20for%20more%20info.">Share
+      on Twitter</a><br />
+    <a class="button" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffeedbirmingham.org&quote=I%E2%80%99m%20helping%20%23feedbirmingham.&hashtag=feedbirmingham">Share
+      on Facebook</a>
 
   </div>
 
@@ -74,7 +76,9 @@
     $('#pdf').on('click', function(e) {
       e.preventDefault();
       var element = document.getElementById('test');
-      var options = {filename: 'feedbirmingham.pdf'};
+      var options = {
+        filename: 'feedbirmingham.pdf'
+      };
       var exporter = new html2pdf(element, options);
       var time = new Date().toLocaleString();
       var text = '{"name" : "' + document.getElementById('name').innerHTML + '", ' +
