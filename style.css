@@ -20,6 +20,16 @@ form {
   color: black;
 }
 
+#bubble {
+  position: absolute;
+  display: block;
+  max-width: 370px;
+  width: 40%;
+  height: auto;
+  left: 55%;
+  z-index: 10;
+}
+
 #test a {
   color: black;
 }
@@ -51,7 +61,9 @@ a.button:hover, button:hover {
 
 form span {
   font-weight: bold;
-  border-bottom: 4px solid white;
+  border-bottom: 2px solid black;
+  color: #DA532C;
+  padding: 0.1em;
 }
 
 h1 {
