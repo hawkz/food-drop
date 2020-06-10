@@ -1,11 +1,26 @@
 body {
   background: #DA532C;
+  background: -webkit-gradient(linear,left top,right top,color-stop(0,#db411a),to(#ef7e23));
+  background: -webkit-linear-gradient(left,#db411a,#ef7e23);
+  background: -o-linear-gradient(left,#db411a 0,#ef7e23 100%);
+  background: linear-gradient(90deg,#db411a 0,#ef7e23);
   text-align: center;
   margin: 16px;
   padding: 0;
   color: white;
 }
 
+body:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: url(https://thrivetogetherbham.org/assets/img/svg/homepage-circles.svg) bottom center no-repeat;
+}
 
 form {
   max-width: 1000px;
